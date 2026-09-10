@@ -109,13 +109,6 @@ This project provided the banking institution with a robust analytical framework
 
 ---
 
-## Live Demo
-
-Experience the interactive Streamlit application:
-https://bankchurnanalysis.streamlit.app/
-
----
-
 ## Installation & Usage
 
 To run this project locally, follow these steps:
@@ -123,27 +116,36 @@ To run this project locally, follow these steps:
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/BANK_CHURN_ANALYSIS.git
-    cd BANK_CHURN_ANALYSIS
+    git clone https://github.com/AUNGNYILATT421/Bank_Customer_Churn.git
+    cd Bank_Customer_Churn
     ```
 
-2.  **Create a virtual environment (recommended):**
+2.  **Install Pipenv** (if you don't already have it):
 
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: `venv\Scripts\activate`
+    pip install pipenv
     ```
 
 3.  **Install dependencies:**
 
+    This project uses [Pipenv](https://pipenv.pypa.io/) — it reads the `Pipfile`/`Pipfile.lock`, creates an isolated virtual environment pinned to Python 3.10, and installs the exact locked package versions in one step:
+
     ```bash
-    pip install -r requirements.txt
+    pipenv install
     ```
 
-4.  **Place your data:**
-    - Ensure your Excel data files (e.g., `Bank_Churn_Data_D....xlsx`, `Bank_Churn_Messy....xlsx`, `Bank_Churn.csv`) are placed in the `dataset/` directory.
+4.  **Activate the virtual environment:**
 
-5.  **Run the Streamlit application:**
+    ```bash
+    pipenv shell
+    ```
+
+    (Alternatively, skip activation and prefix each command with `pipenv run`, e.g. `pipenv run streamlit run dashboard.py`.)
+
+5.  **Place your data:**
+    - Ensure your data files (`Bank_Churn.csv`, `Bank_Churn_Messy.xlsx`, `Bank_Churn_Data_Dictionary.csv`) are placed in the `dataset/` directory.
+
+6.  **Run the Streamlit application:**
 
     ```bash
     streamlit run dashboard.py
@@ -154,17 +156,15 @@ The application will open in your web browser.
 ## Project Structure
 
 ```
-BANK_CHURN_ANALYSIS/
+BANK_CUSTOMER_CHURN/
 ├── dataset/
 │   ├── Bank_Churn_Data_D....xlsx
 │   ├── Bank_Churn_Messy....xlsx
 │   ├── Bank_Churn.csv
 │   ├── cleaned_data.csv
 │   └── feature_coefficient.csv
-├── resources/
-│   ├── datacleaning_steps.txt
 ├── dashboard.py
-├── bank_churn_analysis.ipynb
-
-└── requirements.txt
+├── bank_customer_analysis.ipynb
+├── Pipfile
+├── Pipfile.lock
 ```
