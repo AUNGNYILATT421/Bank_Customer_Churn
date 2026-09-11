@@ -69,10 +69,10 @@ My approach followed a comprehensive data science pipeline, from meticulous data
 
 ### 6\. Predictive Modeling & Detailed Churn Insights
 
-- **Model Training:** Trained predictive models using **Stratified K-Fold Cross-Validation** to ensure robust evaluation across different churn proportions and **RandomizedSearchCV for hyperparameter tuning**, ensuring optimal model performance across the entire dataset.
-- **Model Selection:** **Logistic Regression** was chosen as the primary model due to its **superior interpretability** and its performance being comparable to (or not significantly different from) Random Forest for this dataset.
-- **Performance:** The Logistic Regression model achieved an **accuracy of 0.83** and an F1-score of 0.60. While it successfully predicted **62% of churners**, it also indicated that 38% of churners were still being missed, highlighting a clear area for potential future model improvements (e.g., exploring advanced techniques or new data sources).
-- **Exported Insights:** Cleaned data (`cleaned_data.csv`), feature coefficients (`feature_coefficient.csv`), and churn probabilities were exported to CSV for further analysis and easy access by business teams.
+- **Model Training:** Trained and compared three candidate models — **Logistic Regression**, **Random Forest Classifier**, and **XGBoost Classifier** — using **Stratified K-Fold Cross-Validation** to ensure robust evaluation across different churn proportions and **RandomizedSearchCV for hyperparameter tuning**, optimizing for ROC-AUC.
+- **Model Selection:** **XGBoost Classifier** was selected as the final model, achieving the best combined F1-scores across both classes — **No-Churn (0.91)** and **Churn (0.57)** — outperforming Random Forest (Churn F1: 0.55) and edging out Logistic Regression's Churn F1 (0.58) while delivering substantially higher overall accuracy. Logistic Regression coefficients were retained separately for their interpretability in explaining feature-level drivers of churn.
+- **Performance:** The XGBoost model achieved an **accuracy of 0.86**, with a **precision of 0.73** and **recall of 0.47** for the churn class. This trades off some recall against Logistic Regression (which caught 71% of churners at a lower 0.79 overall accuracy), highlighting recall improvement as a clear area for future model refinement (e.g., threshold tuning, class-weighting, or exploring additional data sources). Model behavior was further interpreted using **SHAP (SHapley Additive exPlanations)** values to identify the top features driving individual churn predictions.
+- **Exported Insights:** Cleaned data (`cleaned_data.csv`), Logistic Regression feature coefficients (`feature_coefficient.csv`), and XGBoost-predicted churn probabilities were exported to CSV for further analysis and easy access by business teams.
 
 ### 7\. Strategic Customer Segmentation & Actionable Recommendations
 
