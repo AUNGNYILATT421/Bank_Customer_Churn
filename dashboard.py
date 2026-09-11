@@ -118,8 +118,10 @@ if page == "Customer Overview":
     with visual_pane:
         kpi1,kpi2,kpi3,kpi4,kpi5 = st.columns(5)
         kpi1.metric("Total Customers",len(filtered_df))
-        kpi2.metric("Active Rate",f"{round(filtered_df['isactivemember'].mean()*100)}%")
-        kpi3.metric("Avg Credit Score",f"{round(filtered_df['creditscore'].mean())}")
+        active_rate = filtered_df['isactivemember'].mean()
+        kpi2.metric("Active Rate",f"{round(active_rate*100)}%" if pd.notna(active_rate) else "N/A")
+        avg_credit_score = filtered_df['creditscore'].mean()
+        kpi3.metric("Avg Credit Score",f"{round(avg_credit_score)}" if pd.notna(avg_credit_score) else "N/A")
         kpi4.metric("Avg Saving (€)",f"{number_format(filtered_df[filtered_df['balance']>0]['balance'].mean())}")
         kpi5.metric("Avg Income (€)",f"{number_format(filtered_df['estimatedsalary'].median())}")
 
